@@ -11,17 +11,10 @@
       %li= item.text
       %li= item.price
       %img{:src => "#{item.image}"}/
+    = link_to 'Edit', edit_item_path(item)
+    = link_to 'Delete', item_path(item),
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
 
-- @items.each do |item|
-  %ul
-    %li=	item.title
-    %li=	item.text
-    %li=	item.price
-    %li=	item.image
-  = link_to 'Edit', edit_item_path(item)
-  = link_to 'Delete', item_path(item),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
-
-  %p
-  = link_to 'Home', root_path
+    %p
+    = link_to 'Home', root_path
