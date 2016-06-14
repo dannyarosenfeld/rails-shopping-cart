@@ -1,4 +1,11 @@
 class ItemsController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
+
+  def admin
+    @items = Item.all
+    redirect_to items_path
+  end
+
   def index
     @items = Item.all
   end
@@ -44,7 +51,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:title, :text, :price, :image)
+    params.require(:item).permit(:title, :text, :price, :image, :quantity)
   end
 
 end
