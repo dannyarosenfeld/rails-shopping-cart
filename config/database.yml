@@ -66,5 +66,5 @@ test:
 production:
   <<: *default
   database: shoppe_production
-  username: shoppe
-  password: <%= ENV['SHOPPE_DATABASE_PASSWORD'] %>
+  # username: shoppe
+  # password: <%= ENV['SHOPPE_DATABASE_PASSWORD'] %>
