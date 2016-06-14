@@ -1,3 +1,6 @@
+- flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+
 %h2 Enter Your New Item:
 = form_for :item, url: items_path do |f|
   %p

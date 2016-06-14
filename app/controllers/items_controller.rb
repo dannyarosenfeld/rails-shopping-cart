@@ -22,8 +22,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
+      flash[:success] = "You have entered an item"
       redirect_to @item
     else
+      flash[:error] = "Wrong input"
       render 'new'
     end
   end
