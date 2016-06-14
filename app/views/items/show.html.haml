@@ -1,7 +1,11 @@
-%h1 You have entered a new item
-= @item.title
-= @item.text
-= @item.price
-= @item.image
+%h1
+%ul
+  %h1= @item.title
+  %br
+  %li= @item.text
+  %li= @item.price
+  %img{:src => "#{@item.image}"}/
+
+
 
 = link_to 'Home', root_path

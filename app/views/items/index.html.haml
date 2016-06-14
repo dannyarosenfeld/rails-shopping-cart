@@ -1,20 +1,17 @@
 %div.page
 
-  %h1#title Welcome to Your Online Shop!
+  %h1#title Welcome to Your Online Pet Store!
   = link_to 'New Item', new_item_path
-  %h2 Here are your items
+  %h2 Here are the available pets:
 
 
   - @items.each do |item|
     %ul
-      %li= item.title
-      %li= item.text
-      %li= item.price
-      %img{:src => "#{item.image}"}/
+      %li= link_to "#{item.title}", item_path(item.id)
     = link_to 'Edit', edit_item_path(item)
     = link_to 'Delete', item_path(item),
       method: :delete,
       data: { confirm: 'Are you sure?' }
 
-    %p
-    = link_to 'Home', root_path
+  %p
+  = link_to 'Home', root_path
