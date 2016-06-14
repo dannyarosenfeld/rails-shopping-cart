@@ -7,9 +7,10 @@
 
 - @items.each do |item|
   %ul
-    %li= item.title
-    %li= item.text
-    %li= item.price
+    %li=	item.title
+    %li=	item.text
+    %li=	item.price
+    %li=	item.image
   = link_to 'Edit', edit_item_path(item)
   = link_to 'Delete', item_path(item),
     method: :delete,
