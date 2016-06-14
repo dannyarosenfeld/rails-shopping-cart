@@ -53,11 +53,12 @@ RSpec.describe ItemsController do
         expect(item.reload.text).to eq(":(")
       end
     end
-    # context 'on invalid params' do
-    #   let(:params) {{"item"=>{"body"=>''}, "id"=>0000}}
-    #   xit 'does not change an item in the database' do
-    #   end
-    # end
+    context 'on invalid params' do
+      let(:params) {{"item"=>{"text"=>''}, "id"=>item.id}}
+       it 'does not change an item in the database' do
+        expect(item.text).to eq(item.text)
+      end
+    end
   end
   describe '#destroy' do
     it 'responds with a status of 302' do
