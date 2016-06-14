@@ -1,3 +1,4 @@
+%h2 Enter Your New Item:
 = form_for :item, url: items_path do |f|
   %p
     = f.label :title
@@ -11,4 +12,4 @@
   %p
     = f.submit
 
-/ = link_to 'Home', item_path
+= link_to 'Home', root_path
