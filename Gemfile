@@ -17,5 +17,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'shoulda'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
