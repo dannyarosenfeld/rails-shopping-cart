@@ -32,7 +32,7 @@ RSpec.describe ItemsController do
     end
   end
   describe '#create' do
-    let(:params) {{"item"=>{"title"=>"hello", "text"=>"these are the paramz", "price" => "3.987"}}}
+    let(:params) {{"item"=>{"title"=>"hello", "text"=>"these are the paramz", "price" => 400, "image" => "http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg"}}}
     it 'increments items in the database by 1' do
       expect{post :create, params}.to change{Item.count}.by(1)
     end
@@ -41,31 +41,31 @@ RSpec.describe ItemsController do
       expect(response.status).to eq(302)
     end
   end
-  # describe '#update' do
-  #   let(:params) {{"item"=>{"title"=>item.title, "body"=>":("}}, "id"=>item.id}
-  #   context 'on valid params' do
-  #     it 'responds with a status of 302' do
-  #       patch :update, params
-  #       expect(response.status).to eq(302)
-  #     end
-  #     it 'updates an item in the database' do
-  #       patch :update, params
-  #       expect(item.reload.body).to eq(":(")
-  #     end
-  #   end
-  #   context 'on invalid params' do
-  #     let(:params) {{"item"=>{"body"=>''}, "id"=>0000}}
-  #     xit 'does not change an item in the database' do
-  #     end
-  #   end
-  # end
-  # describe '#destroy' do
-  #   it 'responds with a status of 302' do
-  #     delete :destroy, id: item.id
-  #     expect(response.status).to eq(302)
-  #   end
-  #   it 'decrements the items in the database by 1' do
-  #     expect{delete :destroy, id: item.id}.to change{Item.count}.by(-1)
-  #   end
-  # end
+  describe '#update' do
+    let(:params) {{"item"=>{"title"=>item.title, "text"=>":("}, "id"=>item.id}}
+    context 'on valid params' do
+      it 'responds with a status of 302' do
+        patch :update, params
+        expect(response.status).to eq(302)
+      end
+      it 'updates an item in the database' do
+        patch :update, params
+        expect(item.reload.text).to eq(":(")
+      end
+    end
+    # context 'on invalid params' do
+    #   let(:params) {{"item"=>{"body"=>''}, "id"=>0000}}
+    #   xit 'does not change an item in the database' do
+    #   end
+    # end
+  end
+  describe '#destroy' do
+    it 'responds with a status of 302' do
+      delete :destroy, id: item.id
+      expect(response.status).to eq(302)
+    end
+    it 'decrements the items in the database by 1' do
+      expect{delete :destroy, id: item.id}.to change{Item.count}.by(-1)
+    end
+  end
 end
