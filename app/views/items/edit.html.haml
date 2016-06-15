@@ -1,6 +1,6 @@
 %div.page
   %h1#title Edit Your Item
-  = form_for :item, url: item_path(@item), method: :patch do |f|
+  = form_for :item, url: admin_path, method: :patch do |f|
     - if @item.errors.any?
       #error_explanation
         %h2
@@ -32,4 +32,4 @@
         = f.text_area :image
     %p
       = f.submit
-  .navbar.navbar-inverse= link_to 'Back', items_path
+  .navbar.navbar-inverse= link_to 'Back', admin_path
