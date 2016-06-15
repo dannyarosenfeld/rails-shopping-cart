@@ -6,9 +6,9 @@
   %ul
     %h1.words= @item.title
     %br
-    %li.words= @item.text
-    %li.words= @item.quantity
-    %li.words= @item.price
+    .words= @item.text
+    .words= @item.quantity
+    .words= @item.price
     %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 120px;max-height: 100px"}
     %br
     = link_to 'Edit', edit_item_path(@item)
