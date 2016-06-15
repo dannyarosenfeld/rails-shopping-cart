@@ -12,7 +12,7 @@
   .words= @item.quantity
   %br
   .words= "Unit Price"
-  .words= "$" + @item.price.to_s
+  .words= number_to_currency(@item.price)
   %br
   %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 400px;max-height: 380px"}
   %br
