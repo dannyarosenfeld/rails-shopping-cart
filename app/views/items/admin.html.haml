@@ -1,4 +1,6 @@
 %div.navbar.navbar-inverse
+  - flash.each do |message_type, message|
+    %div.link{:class => "alert alert-#{message_type}"}= message
   %body
   %h1#title Inventory
   .link= link_to'New Item', new_item_path
@@ -21,7 +23,7 @@
             %td.words-admin
               =item.text
             %td.words-admin
-              =item.price
+              =number_to_currency(item.price)
             %td.words-admin
               =item.quantity
             %td.words-admin
