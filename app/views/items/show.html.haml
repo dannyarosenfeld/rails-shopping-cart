@@ -17,7 +17,7 @@
   %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 400px;max-height: 380px"}
   %br
   %br
-  %div.navbar.navbar-inverse
+  %div.navbar.navbar-inverse.navbar-fixed-bottom
     .words= link_to 'Edit', edit_item_path(@item)
     .words= link_to 'Delete', item_path(@item),
       method: :delete,
