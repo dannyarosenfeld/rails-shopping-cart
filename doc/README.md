@@ -17,7 +17,7 @@ Important down the road for listing development dependencies.
 
 ## Deployment details and link
 
-- [App Name Link](https:yourthing.herokuapp.com)
+- [Online shopping](https://floating-mesa-97764.herokuapp.com/)
 
 
 ## iteration 2

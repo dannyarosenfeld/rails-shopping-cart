@@ -4,5 +4,6 @@ FactoryGirl.define do
     text { Faker::Hipster.sentence}
     price { Faker::Commerce.price}
     image { Faker::Avatar.image}
+    quantity { rand(1..50) }
   end
 end
