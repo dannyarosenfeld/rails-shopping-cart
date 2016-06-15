@@ -18,8 +18,4 @@
   %br
   %br
   %div.navbar.navbar-inverse.navbar-fixed-bottom
-    .words= link_to 'Edit', edit_item_path(@item)
-    .words= link_to 'Delete', item_path(@item),
-      method: :delete,
-      data: { confirm: 'Are you sure?' }
     .words= link_to 'Home', root_path
