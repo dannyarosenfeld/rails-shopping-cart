@@ -1,7 +1,5 @@
 %div.page.navbar.navbar-inverse
   %h1
-    - flash.each do |message_type, message|
-      %div{:class => "alert alert-#{message_type}"}= message
 
   %h1.link= @item.title
   %br
@@ -14,7 +12,7 @@
   .words= "Unit Price"
   .words= number_to_currency(@item.price)
   %br
-  %img{:src => "#{@item.image}", :style => "width: 50%;"}
+  %img{:src => "#{@item.image}", :style => "width: auto;"}
   %br
   %br
   %div.navbar.navbar-inverse.navbar-fixed-bottom
