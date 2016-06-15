@@ -1,8 +1,8 @@
-#title, .link {
+#title {
   font-style: italic;
   text-align: center;
   color: white;
-  font-size: 70px;
+  font-size: 50px;
 }
 .link {
   font-style: italic;
@@ -30,6 +30,7 @@
 
 .words {
   color: white;
+  font-size: 20px;
 }
 .form-text {
   color: black;
