@@ -1,4 +1,11 @@
 class ItemsController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
+
+  def admin
+    @items = Item.all
+    redirect_to items_path
+  end
+
   def index
     @items = Item.all
   end
@@ -15,9 +22,11 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
+      flash[:success] = "You have entered an item"
       redirect_to @item
     else
-      render 'new'
+      flash[:error] = "Wrong input"
+      redirect_to new_item_path
     end
   end
 
@@ -44,7 +53,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:title, :text, :price, :image)
+    params.require(:item).permit(:title, :text, :price, :image, :quantity)
   end
 
 end

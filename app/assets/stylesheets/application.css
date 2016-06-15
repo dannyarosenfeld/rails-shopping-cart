@@ -1,8 +1,15 @@
-#title {
+#title, .link {
   font-style: italic;
-  background-color: red;
   text-align: center;
+  color: white;
+  font-size: 70px;
 }
+.link {
+  font-style: italic;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  }
 
 h2 {
   color: blue;
@@ -10,5 +17,18 @@ h2 {
 
 .page {
   background-color: pink;
+  background-position: fixed;
+  text-align: center;
+  height: 100%;
 }
 
+.table {
+ color: white;
+}
+
+.words {
+  color: white;
+}
+.form-text {
+  color: black;
+}
