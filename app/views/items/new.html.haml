@@ -1,24 +1,27 @@
-- flash.each do |message_type, message|
-  %div{:class => "alert alert-#{message_type}"}= message
+%div.page.navbar.navbar-inverse
 
-%h2 Enter Your New Item:
-= form_for :item, url: items_path do |f|
-  %p
-    = f.label :title
-    = f.text_field :title
-  %p
-    = f.label :text
-    = f.text_field :text
-  %p
-    = f.label :quantity
-    = f.text_field :quantity
-  %p
-    = f.label :price
-    = f.text_field :price
-  %p
-    = f.label :image
-    = f.text_field :image
-  %p
-    = f.submit
+  - flash.each do |message_type, message|
+    %div{:class => "alert alert-#{message_type}"}= message
 
-= link_to 'Home', root_path
+  %div.words
+    %h2 Enter Your New Item:
+    = form_for :item, url: items_path do |f|
+      %p
+        = f.label :Item
+        .form-text= f.text_field :title
+      %p
+        = f.label :Description
+        .form-text= f.text_field :text
+      %p
+        = f.label :Quantity
+        .form-text= f.text_field :quantity
+      %p
+        = f.label :Price
+        .form-text= f.text_field :price
+      %p
+        = f.label :image
+        .form-text= f.text_field :image
+      %p.form-text
+        = f.submit
+
+    = link_to 'Home', root_path

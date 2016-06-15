@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
       redirect_to @item
     else
       flash[:error] = "Wrong input"
-      render 'new'
+      redirect_to new_item_path
     end
   end
 

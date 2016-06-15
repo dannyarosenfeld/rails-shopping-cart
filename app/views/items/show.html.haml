@@ -1,18 +1,19 @@
-%h1
-  - flash.each do |message_type, message|
-    %div{:class => "alert alert-#{message_type}"}= message
+%div.page.navbar.navbar-inverse
+  %h1
+    - flash.each do |message_type, message|
+      %div{:class => "alert alert-#{message_type}"}= message
 
-%ul
-  %h1= @item.title
-  %br
-  %li= @item.text
-  %li= @item.quantity
-  %li= @item.price
-  %img{:src => "#{@item.image}"}/
-  %br
-  = link_to 'Edit', edit_item_path(@item)
-  = link_to 'Delete', item_path(@item),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
+  %ul
+    %h1.words= @item.title
+    %br
+    %li.words= @item.text
+    %li.words= @item.quantity
+    %li.words= @item.price
+    %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 120px;max-height: 100px"}
+    %br
+    = link_to 'Edit', edit_item_path(@item)
+    = link_to 'Delete', item_path(@item),
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
 
-= link_to 'Home', root_path
+  = link_to 'Home', root_path
