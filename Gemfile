@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-
+gem 'bcrypt', '~> 3.1.7'
 gem 'rails'
 gem 'pg'
-
 gem 'uglifier'
 gem 'thin'
 gem 'flash'

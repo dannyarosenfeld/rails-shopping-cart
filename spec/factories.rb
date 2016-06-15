@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :user do
+    
+  end
   factory :item do
     title { Faker::Hipster.word}
     text { Faker::Hipster.sentence}
