@@ -6,14 +6,14 @@
     %table.table.table-condensed
       %thead
         %tr
-          %th.link Recently Posted Items:
+          %th.link-heading Recently Posted Items:
 
     - @items.each do |item|
       %div.col-sm-4
         %tbody
           %tr
             .link=item.title
-            .link.image=link_to image_tag("#{item.image}", width: "50%", height: "40%"), item_path(item.id)
+            .link=link_to image_tag("#{item.image}", width: "50%", height: "40%"), item_path(item.id)
             %br
   %p
   .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
