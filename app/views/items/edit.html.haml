@@ -1,34 +1,35 @@
-%h1 Edit Your Item
-= form_for :item, url: item_path(@item), method: :patch do |f|
-  - if @item.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@item.errors.count, "error")
-        prohibited
-        this item from being saved:
-      %ul
-        - @item.errors.full_messages.each do |msg|
-          %li= msg
-  %p
-    = f.label :title
-    %br
-      = f.text_field :title
-  %p
-    = f.label :text
-    %br
-      = f.text_area :text
-  %p
-    = f.label :quantity
-    %br
-      = f.text_area :quantity
-  %p
-    = f.label :price
-    %br
-      = f.text_area :price
-  %p
-    = f.label :image
-    %br
-      = f.text_area :image
-  %p
-    = f.submit
-= link_to 'Back', items_path
+%div.page
+  %h1#title Edit Your Item
+  = form_for :item, url: item_path(@item), method: :patch do |f|
+    - if @item.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@item.errors.count, "error")
+          prohibited
+          this item from being saved:
+        %ul
+          - @item.errors.full_messages.each do |msg|
+            %li= msg
+    %p
+      .words= f.label :title
+      %br
+        = f.text_field :title
+    %p
+      .words= f.label :text
+      %br
+        = f.text_area :text
+    %p
+      .words= f.label :quantity
+      %br
+        = f.text_area :quantity
+    %p
+      .words= f.label :price
+      %br
+        = f.text_area :price
+    %p
+      .words= f.label :image
+      %br
+        = f.text_area :image
+    %p
+      = f.submit
+  .navbar.navbar-inverse= link_to 'Back', items_path
