@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
 
     if @item.save
       flash[:success] = "You have entered an item"
-      redirect_to @item
+      redirect_to admin_path
     else
       flash[:danger] = "Wrong input"
       redirect_to new_item_path
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
 
-    redirect_to items_path
+    redirect_to admin_path
   end
 
   private
