@@ -13,7 +13,7 @@
         %tbody
           %tr
             .link=item.title
-            .link=link_to image_tag("#{item.image}", width: "50%", height: "40%"), item_path(item.id)
+            .link.img-responsive=link_to image_tag("#{item.image}", width: "50%", height: "30%"), item_path(item.id)
             %br
   %p
   .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
