@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def admin
     @items = Item.all
-    redirect_to items_path
+    render "admin"
   end
 
   def index

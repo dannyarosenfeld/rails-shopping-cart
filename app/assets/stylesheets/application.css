@@ -49,3 +49,10 @@
 .link:hover {
   color: #FF4500;
 }
+
+.words-admin {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 10%;
+}
