@@ -2,16 +2,18 @@
   %body
   %h1#title Welcome to Your Online Shopping Paradise!
   .link= link_to'New Item', new_item_path
-  %table.table.table-condensed
-    %thead
-      %tr
-        %th.link Recently Posted Items
+  %div
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th.link Recently Posted Items:
 
-  - @items.each do |item|
-    %tbody
-      %tr
-        .link=item.title
-        .link=link_to image_tag("#{item.image}", width: "10%", height: "20%"), item_path(item.id)
-        %br
+    - @items.each do |item|
+      %div.col-sm-4
+        %tbody
+          %tr
+            .link=item.title
+            .link.image=link_to image_tag("#{item.image}", width: "50%", height: "40%"), item_path(item.id)
+            %br
   %p
-  = link_to 'Home', root_path
+  .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
