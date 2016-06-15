@@ -10,8 +10,16 @@
   color: white;
   font-size: 30px;
   }
+.link-heading {
+  font-style: italic;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  }
 
 .page {
+  background: url(http://wallpaperhdbase.com/wp-content/gallery/animated-gif-desktop-background/animation-gif-686371.jpg);
+  background-size: contain;
   background-position: fixed;
   text-align: center;
   height: 100%;
@@ -34,4 +42,8 @@
 }
 .form-text {
   color: black;
+}
+
+.link:hover {
+  color: #FF4500;
 }
