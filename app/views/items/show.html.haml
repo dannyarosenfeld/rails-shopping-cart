@@ -8,12 +8,13 @@
     %br
     .words= @item.text
     .words= @item.quantity
-    .words= @item.price
+    .words= "$" + @item.price.to_s
     %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 120px;max-height: 100px"}
     %br
     = link_to 'Edit', edit_item_path(@item)
+    %br
     = link_to 'Delete', item_path(@item),
       method: :delete,
       data: { confirm: 'Are you sure?' }
-
+  %br
   = link_to 'Home', root_path

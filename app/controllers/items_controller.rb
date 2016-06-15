@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
       flash[:success] = "You have entered an item"
       redirect_to @item
     else
-      flash[:error] = "Wrong input"
+      flash[:danger] = "Wrong input"
       redirect_to new_item_path
     end
   end
