@@ -3,18 +3,23 @@
     - flash.each do |message_type, message|
       %div{:class => "alert alert-#{message_type}"}= message
 
-  %ul
-    %h1.words= @item.title
-    %br
-    .words= @item.text
-    .words= @item.quantity
-    .words= "$" + @item.price.to_s
-    %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 120px;max-height: 100px"}
-    %br
-    = link_to 'Edit', edit_item_path(@item)
-    %br
-    = link_to 'Delete', item_path(@item),
+  %h1.link= @item.title
+  %br
+  .words= "Item Details:"
+  .words= @item.text
+  %br
+  .words= "Stock Quantity:"
+  .words= @item.quantity
+  %br
+  .words= "Unit Price"
+  .words= "$" + @item.price.to_s
+  %br
+  %img{:src => "#{@item.image}", :style => "width: auto; height: auto;max-width: 400px;max-height: 380px"}
+  %br
+  %br
+  %div.navbar.navbar-inverse
+    .words= link_to 'Edit', edit_item_path(@item)
+    .words= link_to 'Delete', item_path(@item),
       method: :delete,
       data: { confirm: 'Are you sure?' }
-  %br
-  = link_to 'Home', root_path
+    .words= link_to 'Home', root_path
