@@ -1,4 +1,10 @@
+- flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+
 %div.page.navbar.navbar-inverse
+  =link_to 'Register', new_user_path
+  =link_to 'Login', login_path
+
   %body
   %h1#title Welcome to Your Online Shopping Paradise!
   %div

@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # A sanity check
     @item = Item.new(item_params)
 
     if @item.save

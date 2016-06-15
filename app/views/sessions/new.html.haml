@@ -1,0 +1,14 @@
+- flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+
+- provide(:title, 'Login')
+%h1 Login
+%div.register
+  = form_for  :session, url: login_path do |f|
+    = f.label :username
+    = f.email_field :username
+    %p
+    = f.label :password
+    = f.password_field :password
+    %p
+    = f.submit "Create my account", class: "btn btn-primary"
