@@ -1,10 +1,13 @@
 - flash.each do |message_type, message|
   %div{:class => "alert alert-#{message_type}"}= message
-
-%div.page.navbar.navbar-inverse
+-if logged_in?
+  =link_to 'Logout', logout_path, method: :delete
+-else
   =link_to 'Register', new_user_path
+  |
   =link_to 'Login', login_path
 
+%div.page.navbar.navbar-inverse
   %body
   %h1#title Welcome to Your Online Shopping Paradise!
   %div
@@ -20,5 +23,6 @@
             .link=item.title
             .link.img-responsive=link_to image_tag("#{item.image}", width: "50%"), item_path(item.id)
             %br
-  %p
-  .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
+
+%p
+.words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
