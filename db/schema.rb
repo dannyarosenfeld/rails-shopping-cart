@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(version: 20160616035755) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_items", force: :cascade do |t|
-    t.integer  "category_id"
-    t.integer  "item_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "categories_items", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "item_id"
   end
+
+  add_index "categories_items", ["category_id"], name: "index_categories_items_on_category_id", using: :btree
+  add_index "categories_items", ["item_id"], name: "index_categories_items_on_item_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "title"

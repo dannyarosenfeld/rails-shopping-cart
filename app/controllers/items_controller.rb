@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
     @items = Item.all
   end
 

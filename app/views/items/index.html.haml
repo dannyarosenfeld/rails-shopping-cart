@@ -18,6 +18,9 @@
       %thead
         %tr
           %th.link-heading Recently Posted Items:
+    %h2#title Categories:
+    - @categories.each do |category|
+      .words-admin= link_to category.title, category_path(category)
 
     - @items.each do |item|
       %div.col-sm-4

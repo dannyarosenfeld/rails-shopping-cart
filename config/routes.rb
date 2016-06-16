@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :items
   resources :users
+  resources :category
+
   root 'items#index'
 
   get '/admin', :to => 'items#admin'

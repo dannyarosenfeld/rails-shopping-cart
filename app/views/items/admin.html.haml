@@ -16,6 +16,7 @@
             %th.link-heading Description:
             %th.link-heading Price:
             %th.link-heading Quantity:
+            %th.link-heading Category:
         - @items.each do |item|
           %tbody
             %tr
@@ -30,10 +31,14 @@
               %td.words-admin
                 =item.quantity
               %td.words-admin
+                -item.categories.each do |cat|
+                  =cat.title
+
+              %td.words-admin
                 = link_to 'Edit', edit_item_path(item)
               %td.words-admin
                 = link_to 'Delete', item_path(item),
                 method: :delete,
                 data: { confirm: 'Are you sure?' }
     %p
-    .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
+    .words.navbar.navbar-inverse= link_to 'Home', root_path
