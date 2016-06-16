@@ -1,9 +1,16 @@
 class ItemsController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
 
+  include SessionsHelper
+
   def admin
     @items = Item.all
-    render "admin"
+    if !current_user.admin
+      flash[:danger] = "Nice try, you're not an admin."
+      redirect_to items_path
+    else
+      render "admin"
+    end
   end
 
   def index

@@ -1,5 +1,3 @@
-require_relative '../helpers/sessions_helper'
-
 class SessionsController < ApplicationController
 
   include SessionsHelper
@@ -11,9 +9,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:session][:username].downcase)
 
     if @user && @user.authenticate(params[:session][:password])
-      if @user.username == "tim@tim.com"
-      redirect_to admin_path
-      end
       log_in(@user)
       flash[:success] = 'You are logged in!'
       redirect_to items_path

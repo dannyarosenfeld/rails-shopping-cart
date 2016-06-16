@@ -6,7 +6,7 @@
 %div.register
   = form_for  :session, url: login_path do |f|
     = f.label :username
-    = f.email_field :username
+    = f.text_field :username
     %p
     = f.label :password
     = f.password_field :password
