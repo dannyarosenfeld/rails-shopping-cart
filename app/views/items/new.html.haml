@@ -19,6 +19,12 @@
         = f.label :Price
         .form-text= f.text_field :price
       %p
+        = f.label :categories
+        %br
+        - @categories.each do |cat|
+          = f.label cat.title
+          = f.check_box cat.title, :class => "checkbox"
+      %p
         = f.label :image
         .form-text= f.text_field :image
       %p.form-text

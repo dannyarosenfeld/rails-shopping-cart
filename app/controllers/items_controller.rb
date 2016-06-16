@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @items = Item.new
   end
 
