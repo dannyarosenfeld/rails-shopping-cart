@@ -1,19 +1,34 @@
+- flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+-if logged_in? && current_user.admin
+  =link_to 'Logout', logout_path, method: :delete
+  =link_to 'Admin Page', admin_path
+-elsif logged_in?
+  =link_to 'Logout', logout_path, method: :delete
+-else
+  =link_to 'Register', new_user_path
+  |
+  =link_to 'Login', login_path
+
 %div.page.navbar.navbar-inverse
   %body
   %h1#title Welcome to Your Online Shopping Paradise!
-  .link= link_to'New Item', new_item_path
   %div
     %table.table.table-condensed
       %thead
         %tr
           %th.link-heading Recently Posted Items:
+    %h2#title Categories:
+    - @categories.each do |category|
+      .words-admin= link_to category.title, category_path(category)
 
     - @items.each do |item|
       %div.col-sm-4
         %tbody
           %tr
             .link=item.title
-            .link.img-responsive=link_to image_tag("#{item.image}", width: "50%", height: "30%"), item_path(item.id)
+            .link.img-responsive=link_to image_tag("#{item.image}", width: "50%"), item_path(item.id)
             %br
-  %p
-  .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
+
+%p
+.words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path

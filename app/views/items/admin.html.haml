@@ -1,32 +1,44 @@
-%div.navbar.navbar-inverse
-  %body
-  %h1#title Inventory
-  .link= link_to'New Item', new_item_path
-  %div
-    %table.table-compact
-      %thead
-        %tr
-          %th.link-heading item:
-          %th.link-heading image:
-          %th.link-heading description:
-          %th.link-heading price:
-          %th.link-heading quantity:
-      - @items.each do |item|
-        %tbody
+-if !current_user.admin
+  YOU CANT ACCESS THIS PAGE
+-else
+  %div.navbar.navbar-inverse
+    - flash.each do |message_type, message|
+      %div.link{:class => "alert alert-#{message_type}"}= message
+    %body
+    %h1#title Inventory
+    .link= link_to'New Item', new_item_path
+    %div
+      %table.table-compact
+        %thead
           %tr
-            %td.words-admin
-              =item.title
-            %td.words-admin
-              =link_to image_tag("#{item.image}", width: "30%"), item_path(item.id)
-            %td.words-admin
-              =item.text
-            %td.words-admin
-              =item.price
-            %td.words-admin
-              =item.quantity
-            %td.words-admin
-              = link_to 'Edit', edit_item_path(item)
-            %td.words-admin
-              = link_to 'Delete', item_path(item)
-  %p
-  .words.navbar.navbar-inverse.navbar-fixed-bottom= link_to 'Home', root_path
+            %th.link-heading Item:
+            %th.link-heading Image:
+            %th.link-heading Description:
+            %th.link-heading Price:
+            %th.link-heading Quantity:
+            %th.link-heading Category:
+        - @items.each do |item|
+          %tbody
+            %tr
+              %td.words-admin
+                =item.title
+              %td.words-admin
+                =link_to image_tag("#{item.image}", width: "30%"), item_path(item.id)
+              %td.words-admin
+                =item.text
+              %td.words-admin
+                =number_to_currency(item.price)
+              %td.words-admin
+                =item.quantity
+              %td.words-admin
+                -item.categories.each do |cat|
+                  =cat.title
+
+              %td.words-admin
+                = link_to 'Edit', edit_item_path(item)
+              %td.words-admin
+                = link_to 'Delete', item_path(item),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+    %p
+    .words.navbar.navbar-inverse= link_to 'Home', root_path

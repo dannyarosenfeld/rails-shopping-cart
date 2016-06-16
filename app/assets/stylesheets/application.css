@@ -56,3 +56,13 @@
   text-align: center;
   width: 10%;
 }
+
+.register {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow-x: auto;
+    color: black;
+  font-size: 20px;
+}
