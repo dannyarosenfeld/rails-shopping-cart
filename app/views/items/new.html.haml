@@ -19,9 +19,14 @@
         = f.label :Price
         .form-text= f.text_field :price
       %p
+        = f.label :categories
+        %br
+        - @categories.each do |cat|
+          %input{:type => "checkbox", :name => "item[categories][]", :value => "#{cat.id}"}
+          = f.label cat.title, class: "check_label"
+
+      %p
         = f.label :image
         .form-text= f.text_field :image
       %p.form-text
         = f.submit
-
-    = link_to 'Home', root_path

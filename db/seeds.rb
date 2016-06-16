@@ -1,7 +1,15 @@
-category = ["Books", "Music", "Cool things", "Instruments", "Apparel"]
+Category.delete_all
+Item.delete_all
+User.delete_all
+CategoriesItem.delete_all
 
-category.each do |cat|
-  Category.create(title: cat)
+User.create(name: "Tim", username: "tim", email: "tim@tim.com", password: "timtim", admin: true)
+User.create(name: "Tom", username: "tom", email: "tom@tom.com", password: "tomtom")
+
+categories = ["Books", "Music", "Cool things", "Instruments", "Apparel"]
+
+categories.each do |category|
+  Category.create(title: category)
 end
 # 20.times do (
 #   category = Category.create(

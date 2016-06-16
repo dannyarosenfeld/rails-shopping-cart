@@ -5,7 +5,6 @@ gem 'pg'
 gem 'uglifier'
 gem 'thin'
 gem 'flash'
-gem 'faker'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'rails_12factor', group: :production

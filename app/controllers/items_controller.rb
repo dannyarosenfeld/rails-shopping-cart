@@ -2,14 +2,15 @@ class ItemsController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "secret", except: [:index, :show]
 
   include SessionsHelper
+  include ApplicationHelper
 
   def admin
     @items = Item.all
-    if !current_user.admin
+    if current_user && current_user.admin
+      render "admin"
+    else
       flash[:danger] = "Nice try, you're not an admin."
       redirect_to items_path
-    else
-      render "admin"
     end
   end
 
@@ -23,13 +24,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+    @categories = Category.all
+    # @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
+    categories = params[:item][:categories]
 
-    if @item.save
+    if !categories.empty? && @item.save
+      save_categories(categories)
       flash[:success] = "You have entered an item"
       redirect_to admin_path
     else
@@ -40,13 +44,17 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all
   end
 
   def update
-    @item = Item.find(params[:id])
 
-    if @item.update(item_params)
-      redirect_to @item
+    @item = Item.find(params[:id])
+    categories = params[:item][:categories]
+
+    if !categories.empty? && @item.update(item_params)
+      save_categories(categories)
+      redirect_to admin_path
     else
       render 'edit'
     end

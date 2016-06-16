@@ -7,4 +7,15 @@
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :integrity => "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", :rel => "stylesheet"}
     = stylesheet_link_tag    'application', media: 'all'
   %body
+    = link_to 'Home', root_path
+    -if logged_in? && current_user.admin
+      =link_to 'Logout', logout_path, method: :delete
+      =link_to 'Admin Page', admin_path
+    -elsif logged_in?
+      =link_to 'Logout', logout_path, method: :delete
+    -else
+      =link_to 'Register', new_user_path
+      |
+      =link_to 'Login', login_path
+
     = yield
