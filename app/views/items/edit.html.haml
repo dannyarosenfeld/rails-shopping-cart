@@ -1,6 +1,6 @@
 %div.page
   %h1#title Edit Your Item
-  = form_for :item, url: admin_path, method: :patch do |f|
+  = form_for @item, method: :patch do |f|
     - if @item.errors.any?
       #error_explanation
         %h2

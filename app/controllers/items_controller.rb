@@ -5,11 +5,11 @@ class ItemsController < ApplicationController
 
   def admin
     @items = Item.all
-    if !current_user.admin
+    if current_user && current_user.admin
+      render "admin"
+    else
       flash[:danger] = "Nice try, you're not an admin."
       redirect_to items_path
-    else
-      render "admin"
     end
   end
 
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to @item
+      redirect_to admin_path
     else
       render 'edit'
     end
