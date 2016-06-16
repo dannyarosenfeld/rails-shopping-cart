@@ -1,15 +1,11 @@
 module ApplicationHelper
 
-  def checked_categories(hash)
-    cats = hash.select do |key,value|
-      value == "1"
-    end
-    cats.keys
-  end
+
 
   def save_categories(categories)
-    categories.each do |cat|
-      @item.categories << Category.find_by(title: cat)
+    @item.categories = []
+    categories.each do |cat_id|
+      @item.categories << Category.find(cat_id)
     end
   end
 end

@@ -22,8 +22,9 @@
         = f.label :categories
         %br
         - @categories.each do |cat|
+          %input{:type => "checkbox", :name => "item[categories][]", :value => "#{cat.id}"}
           = f.label cat.title, class: "check_label"
-          = f.check_box "categories[#{cat.title}]", :class => "checkbox"
+
       %p
         = f.label :image
         .form-text= f.text_field :image

@@ -25,12 +25,12 @@ class ItemsController < ApplicationController
 
   def new
     @categories = Category.all
-    @items = Item.new
+    # @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
-    categories = checked_categories(params[:item][:categories])
+    categories = params[:item][:categories]
 
     if !categories.empty? && @item.save
       save_categories(categories)
@@ -44,12 +44,16 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all
   end
 
   def update
+
     @item = Item.find(params[:id])
-    @item.categories
-    if @item.update(item_params)
+    categories = params[:item][:categories]
+
+    if !categories.empty? && @item.update(item_params)
+      save_categories(categories)
       redirect_to admin_path
     else
       render 'edit'
