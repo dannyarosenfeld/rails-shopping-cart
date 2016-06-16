@@ -22,12 +22,10 @@
         = f.label :categories
         %br
         - @categories.each do |cat|
-          = f.label cat.title
-          = f.check_box cat.title, :class => "checkbox"
+          = f.label cat.title, class: "check_label"
+          = f.check_box "categories[#{cat.title}]", :class => "checkbox"
       %p
         = f.label :image
         .form-text= f.text_field :image
       %p.form-text
         = f.submit
-
-    = link_to 'Home', root_path

@@ -66,3 +66,13 @@
     color: black;
   font-size: 20px;
 }
+
+.checkbox {
+ display: inline;
+}
+
+.check_label {
+  font-weight: lighter;
+}
+
+
