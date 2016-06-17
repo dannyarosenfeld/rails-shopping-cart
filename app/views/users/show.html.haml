@@ -1,1 +1,26 @@
+-if flash[:error]
+  - flash[:error].each do |message|
+    %div{:class => "alert alert-error"}= message
+
 %h1 this is my cart
+%h2 I have
+-@user.carts.where(history: false).each do |cart|
+  =cart.item.title
+  %br
+  Quantity in cart:
+  =cart.quantity
+  Stock:
+  =cart.item.quantity
+  %br
+
+= form_tag(checkout_path, method: "patch") do
+  = submit_tag("Checkout")
+
+%h2 History
+-@user.carts.where(history: true).each do |cart|
+  =cart.item.title
+  %br
+  Quantity:
+  =cart.quantity
+  %br
+

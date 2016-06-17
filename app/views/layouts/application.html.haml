@@ -12,6 +12,8 @@
     -if logged_in? && current_user.admin
       =link_to 'Logout', logout_path, method: :delete
       =link_to 'Admin Page', admin_path
+      %div.nav-cart
+        =link_to 'My Cart', user_path(current_user.id)
     -elsif logged_in?
       =link_to 'Logout', logout_path, method: :delete
       %div.nav-cart

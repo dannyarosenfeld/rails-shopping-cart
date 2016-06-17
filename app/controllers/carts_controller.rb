@@ -18,5 +18,27 @@ class CartsController < ApplicationController
     end
   end
 
+  def checkout
+    enough_stock = true
+    current_user.carts.where(history: false).each do |cart|
+      if !has_enough_stock(cart.item.id, cart.quantity)
+        flash[:error] ||= []
+        flash[:error] << "We currently do not have enough #{cart.item.title} in stock, please adjust your quantity according to our inventory."
+        enough_stock = false
+      end
+    end
+
+    if enough_stock
+      current_user.carts.where(history: false).each do |cart|
+        cart.history = true
+        cart.item.quantity -= cart.quantity
+        cart.save
+        cart.item.save
+      end
+    end
+
+    redirect_to user_path(current_user.id)
+  end
+
 
 end
