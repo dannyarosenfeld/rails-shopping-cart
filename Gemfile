@@ -8,6 +8,7 @@ gem 'flash'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'rails_12factor', group: :production
+gem 'dotenv'
 
 group :development, :test do
   gem 'pry-rails'
