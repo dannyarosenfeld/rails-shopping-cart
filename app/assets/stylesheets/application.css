@@ -71,6 +71,11 @@
  display: inline;
 }
 
+.category-button {
+  display: inline;
+  margin-right: 20px;
+}
+
 .check_label {
   font-weight: lighter;
 }

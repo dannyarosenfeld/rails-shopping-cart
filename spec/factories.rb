@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :cart do
+    
+  end
   factory :categories_item do
     
   end
