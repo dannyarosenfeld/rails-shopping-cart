@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  include SessionsHelper
 
   def show
-    @user = User.find(params[:id])
+    if current_user
+      @user = current_user
+    else
+      redirect_to '/'
+    end
   end
 
   def new
