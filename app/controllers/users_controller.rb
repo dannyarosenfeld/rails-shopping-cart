@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      ExampleMailer.sample_email(@user).deliver
+
       flash[:success] = "Thank you for registering!"
       redirect_to items_path
     else
