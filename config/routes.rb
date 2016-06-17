@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :items
   resources :users
-  resources :category
+  resources :categories
+  resources :carts
 
   root 'items#index'
 
