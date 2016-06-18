@@ -40,5 +40,31 @@ class CartsController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
+  def edit
+    @cart = Cart.find(params[:id])
+    @item = @cart.item
+  end
+
+  def update
+    @cart = Cart.find(params[:id])
+    @cart.quantity = params[:quantity]
+    item = Item.find(params[:item_id])
+    if has_enough_stock(params[:item_id], params[:quantity]) && @cart.save
+      redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "Please enter valid number between 1 and #{item.quantity}"
+      redirect_to "/carts/#{@cart.id}/edit"
+    end
+  end
+
+  def destroy
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+
+    redirect_to user_path(current_user.id)
+
+  end
+
+
 
 end

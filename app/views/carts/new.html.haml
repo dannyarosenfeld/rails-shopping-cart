@@ -1,11 +1,1 @@
-- flash.each do |message_type, message|
-  %div{:class => "alert alert-#{message_type}"}= message
-
-Stock:
-=@item.quantity
-
-= form_tag(carts_path, method: "post") do
-  = label_tag(:quantity, "Quantity:")
-  = text_field_tag(:quantity)
-  %input{:name => "item_id", :type => "hidden", :value => @item.id}
-  = submit_tag("Add to cart")
+= render 'form'

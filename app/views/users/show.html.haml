@@ -13,8 +13,16 @@
   =cart.item.quantity
   %br
 
+  %td.words-admin
+    = link_to 'Edit', edit_cart_path(cart)
+  %td.words-admin
+    = link_to 'Delete', cart_path(cart),
+    method: :delete,
+    data: { confirm: 'Are you sure?' }
+  %br
+
 = form_tag(checkout_path, method: "patch") do
-  = submit_tag("Checkout")
+  = submit_tag "Checkout", data: { confirm: "Are you sure?" }
 
 %h2 History
 -@user.carts.where(history: true).each do |cart|
