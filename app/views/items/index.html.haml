@@ -22,8 +22,11 @@
             .link=item.title
             .link.img-responsive=link_to image_tag("#{item.image}", width: "50%"), item_path(item.id)
             %br
-            %div.btn.btn-default
-              =link_to "add to cart", {:controller => "carts", :action => "new", :item_id => item.id}
+            -if item.quantity > 0
+              %div.btn.btn-default
+                =link_to "add to cart", {:controller => "carts", :action => "new", :item_id => item.id}
+            -else
+              %div.btn.btn-default.oos out of stock
 
             %br
 

@@ -2,7 +2,7 @@
   - flash[:error].each do |message|
     %div{:class => "alert alert-error"}= message
 
-%h1 this is my cart
+%h1="This is #{current_user.name}'s cart!"
 %h2 I have
 -@user.carts.where(history: false).each do |cart|
   =cart.item.title

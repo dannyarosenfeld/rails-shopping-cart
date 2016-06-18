@@ -1,0 +1,11 @@
+%h1 thank you you've purchased
+
+-@carts.each do |cart|
+  =cart.item.title
+  %br
+  =cart.quantity
+  %br
+  ="$#{cart.item.price * cart.quantity}"
+  %br
+Total:
+=@total_price

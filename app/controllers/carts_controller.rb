@@ -20,6 +20,8 @@ class CartsController < ApplicationController
 
   def checkout
     enough_stock = true
+    @carts = current_user.carts.where(history: false)
+    @total_price = current_user.carts.where(history: false).reduce(0) { |sum, cart| sum + cart.item.price * cart.quantity}.to_f
     current_user.carts.where(history: false).each do |cart|
       if !has_enough_stock(cart.item.id, cart.quantity)
         flash[:error] ||= []
@@ -27,7 +29,7 @@ class CartsController < ApplicationController
         enough_stock = false
       end
     end
-
+    p @carts
     if enough_stock
       current_user.carts.where(history: false).each do |cart|
         cart.history = true
@@ -35,9 +37,13 @@ class CartsController < ApplicationController
         cart.save
         cart.item.save
       end
+      render 'thankyou'
+    else
+      redirect_to user_path(current_user.id)
     end
 
-    redirect_to user_path(current_user.id)
+
+
   end
 
   def edit
