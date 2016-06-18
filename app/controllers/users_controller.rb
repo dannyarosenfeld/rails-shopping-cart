@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = current_user
+      @total_price = @user.carts.where(history: false).reduce(0) { |sum, cart| sum + cart.item.price * cart.quantity}.to_f
     else
       redirect_to '/'
     end

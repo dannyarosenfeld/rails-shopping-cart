@@ -11,6 +11,8 @@
   =cart.quantity
   Stock:
   =cart.item.quantity
+  Price:
+  ="$#{cart.item.price * cart.quantity}"
   %br
 
   %td.words-admin
@@ -21,6 +23,9 @@
     data: { confirm: 'Are you sure?' }
   %br
 
+Total Price:
+="$#{@total_price}"
+%br
 = form_tag(checkout_path, method: "patch") do
   = submit_tag "Checkout", data: { confirm: "Are you sure?" }
 
