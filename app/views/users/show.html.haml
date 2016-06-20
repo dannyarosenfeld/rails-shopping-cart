@@ -1,0 +1,39 @@
+-if flash[:error]
+  - flash[:error].each do |message|
+    %div{:class => "alert alert-error"}= message
+
+%h1="This is #{current_user.name}'s cart!"
+%h2 I have
+-@user.carts.where(history: false).each do |cart|
+  =cart.item.title
+  %br
+  Quantity in cart:
+  =cart.quantity
+  Stock:
+  =cart.item.quantity
+  Price:
+  ="$#{cart.item.price * cart.quantity}"
+  %br
+
+  %td.words-admin
+    = link_to 'Edit', edit_cart_path(cart)
+  %td.words-admin
+    = link_to 'Delete', cart_path(cart),
+    method: :delete,
+    data: { confirm: 'Are you sure?' }
+  %br
+
+Total Price:
+="$#{@total_price}"
+%br
+= form_tag(checkout_path, method: "patch") do
+  = submit_tag "Checkout", data: { confirm: "Are you sure?" }
+
+%h2 History
+-@user.carts.where(history: true).each do |cart|
+  =cart.item.title
+  %br
+  Quantity:
+  =cart.quantity
+  %br
+

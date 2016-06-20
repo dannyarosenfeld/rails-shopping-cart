@@ -1,0 +1,15 @@
+%div.page.navbar.navbar-inverse
+  %h1
+
+  %h1.link= @item.title
+  %br
+  .words= "Item Details:"
+  .words= @item.text
+  %br
+  .words= "Stock Quantity:"
+  .words= @item.quantity
+  %br
+  .words= "Unit Price"
+  .words= number_to_currency(@item.price)
+  %br
+  %img{:src => "#{@item.image}", :style => "width: auto;"}

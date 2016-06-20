@@ -1,0 +1,10 @@
+.byebug_history
+/.bundle
+
+/log/*
+!/log/.keep
+/tmp
+
+# Ignore application configuration
+/config/application.yml
+.env
